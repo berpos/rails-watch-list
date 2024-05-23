@@ -1,11 +1,24 @@
-<h2><%= @list.name %></h2>
+<header>
+  <div class="logodiv">
+  </div>
+  <ul>
+    <li><%= link_to 'My lists', lists_path %></li>
+    <li><%= link_to 'New List', new_list_path %></li>
+  </ul>
+</header>
 
-<ul class="list-group">
-    <% @list.bookmarks.each do |bookmark| %>
-      <li class="list-group-item"><strong>Content:</strong> <%= bookmark.comment %></li>
-    <% end %>
-</ul>
+<div class="container">
+  <h2><%= @list.name %></h2>
 
-<%= link_to 'Add a movie', new_list_bookmark_path(@list) %>
+  <ul class="list-group">
+      <% @list.bookmarks.each do |bookmark| %>
+        <li class="list-group-item pb-3"><strong>Content:</strong> <%= bookmark.comment %> <br> <strong>Movie:</strong> <%= bookmark.movie.title %>
+          <%= link_to "delete bookmark", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "are you sure?"}, class: "mybtn d-flex justify-content-center align-items-center w-25" %>
+        </li>
+      <% end %>
+  </ul>
 
-<%= link_to 'Homepage', lists_path %>
+  <%= link_to 'Add a movie', new_list_bookmark_path(@list) %>
+
+  <%= link_to 'Homepage', lists_path %>
+</div>

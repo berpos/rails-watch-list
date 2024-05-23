@@ -1,9 +1,23 @@
-<h1>Your lists</h1>
+<%# <header>
+  <h1 class="d-flex align-items-center justify-content-center pt-2">My Movie List</h1>
+</header> %>
 
-<ul>
-  <% @lists.each do |list| %>
-    <li><%= link_to list.name, list_path(list) %></li>
-  <% end %>
-</ul>
+<header>
+  <div class="logodiv">
+  </div>
+  <ul>
+    <li><%= link_to 'My lists', lists_path %></li>
+    <li><%= link_to 'New List', new_list_path %></li>
+  </ul>
+</header>
 
-<%= link_to 'Create a movie list', new_list_path %>
+
+<div class="container mb-5">
+  <div class="row gap-2 ">
+    <% @lists.each do |list| %>
+     <div class="col-3 border p-5 d-flex align-items-center justify-content-center imagem">
+        <%= link_to list.name, list_path(list), class: "mybtn"%>
+      </div>
+    <% end %>
+  </div>
+</div>
