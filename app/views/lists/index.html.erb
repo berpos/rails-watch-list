@@ -6,7 +6,7 @@
 <div class="container mb-5">
   <div class="row gap-2 d-flex justify-content-center">
     <% @lists.each do |list| %>
-     <div class="col-3 border p-5 d-flex align-items-center justify-content-center imagem">
+     <div class="col-3 border p-5 d-flex align-items-center justify-content-center imagem" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('<%= cl_image_path list.photo.key, height: 300, width: 400, crop: :fill %>')">
         <%= link_to list.name, list_path(list), class: "mybtn"%>
       </div>
     <% end %>
