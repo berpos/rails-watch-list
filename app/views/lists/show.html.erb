@@ -1,24 +1,20 @@
-<header>
-  <div class="logodiv">
-  </div>
-  <ul>
-    <li><%= link_to 'My lists', lists_path %></li>
-    <li><%= link_to 'New List', new_list_path %></li>
-  </ul>
-</header>
-
 <div class="container">
-  <h2><%= @list.name %></h2>
+  <h1 class="text-center fw-bold pb-3"><%= @list.name %></h1>
+  <%= link_to 'Add a movie', new_list_bookmark_path(@list), class:"mybtn2" %>
+  <%= link_to 'Homepage', lists_path, class:"mybtn2" %>
 
-  <ul class="list-group">
+  <ul class="list-group d-flex pt-4 gap-3">
       <% @list.bookmarks.each do |bookmark| %>
-        <li class="list-group-item pb-3"><strong>Content:</strong> <%= bookmark.comment %> <br> <strong>Movie:</strong> <%= bookmark.movie.title %>
-          <%= link_to "delete bookmark", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "are you sure?"}, class: "mybtn d-flex justify-content-center align-items-center w-25" %>
+        <li class="list-group-item pb-3 shadow">
+          <div class="d-flex flex-row gap-3 pb-3">
+            <%= image_tag bookmark.movie.poster_url, class: 'imageposter'%>
+            <div class="d-flex flex-column">
+              <strong>Movie:</strong> <%= bookmark.movie.title %>
+              <strong>Content:</strong> <%= bookmark.comment %>
+            </div>
+          </div>
+            <%= link_to "delete bookmark", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "are you sure?"}, class: "mybtn d-flex justify-content-center align-items-center justify-self-start" %>
         </li>
       <% end %>
   </ul>
-
-  <%= link_to 'Add a movie', new_list_bookmark_path(@list) %>
-
-  <%= link_to 'Homepage', lists_path %>
 </div>

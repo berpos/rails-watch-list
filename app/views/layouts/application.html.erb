@@ -10,7 +10,10 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="bg-gradient-success">
+    <%= render 'layouts/navbar' %>
     <%= yield %>
+    <!-- Button trigger modal -->
+    <%= render 'layouts/new_list_modal' %>
   </body>
 </html>
